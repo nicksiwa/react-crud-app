@@ -1,37 +1,20 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { getAllPost } from './actions/post'
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
+import MainTemplate from './templates/main'
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getAllPost()
-  }
-
   render() {
-    const { posts } = this.props
     return (
-      <div>
-        <ul>
-          {posts && posts.map((post) => (
-            <li key={post.id}>
-              Title: {post.title} Author: {post.author}
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
+      <BrowserRouter>
+        <Router>
+          <Switch>
+            <Route path='/' component={MainTemplate} />
+          </Switch>
+        </Router>
+      </BrowserRouter>
+    )
   }
 }
 
-const mapStateToProps = (state) => ({
-  posts: state.post
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  getAllPost: () => dispatch(getAllPost())
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default App

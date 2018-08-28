@@ -14,3 +14,17 @@ export const getAllPost = () => async (dispatch) => {
     console.log('ACTION_GET_ALL_POST: ', err)
   }
 }
+
+export const getPostById = (id) => async (dispatch) => {
+  try {
+    const res = await Service.Post.getPostById(id)
+    if(res) {
+      dispatch({
+        type: type.POST.GET_BY_ID,
+        payload: res.data
+      })
+    }
+  } catch (err) {
+    console.log('ACTION_GET_POST_BY_ID: ', err)
+  }
+}

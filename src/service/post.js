@@ -7,5 +7,12 @@ export default {
     } catch (err) {
       console.log('SERVICE_GET_ALL_POST: ', err)
     }
+  },
+  getPostById: async (id) => {
+    try {
+      return await call().then((call) => call.get(`/posts/${id}`))
+    } catch (err) {
+      console.log('SERVICE_GET_POST_BY_ID: ', err)
+    }
   }
 }

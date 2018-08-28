@@ -1,8 +1,19 @@
 import { createStore, applyMiddleware } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
 import thunk from 'redux-thunk'
 import reducers from './reducers'
 
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['post']
+}
+
+const persistedReducer = persistReducer(persistConfig, reducers)
+
 export default function configStore () {
-  const store = createStore(reducers, applyMiddleware(thunk))
-  return store
+  const store = createStore(persistedReducer, applyMiddleware(thunk))
+  const persistor = persistStore(store)
+  return { store, persistor }
 }
