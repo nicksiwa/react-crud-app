@@ -8,10 +8,16 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.posts)
+    const { posts } = this.props
     return (
       <div>
-        
+        <ul>
+          {posts && posts.map((post) => (
+            <li key={post.id}>
+              Title: {post.title} Author: {post.author}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
