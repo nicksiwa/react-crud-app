@@ -21,5 +21,12 @@ export default {
     } catch (err) {
       console.log('SERVICE_DELETE_POST: ', err)
     }
+  },
+  createPost: async (value) => {
+    try {
+      return await call().then((call) => call.post('/posts', value))
+    } catch (err) {
+      console.log('SERVICE_CREATE_POST: ', err)
+    }
   }
 }

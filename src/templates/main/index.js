@@ -17,7 +17,6 @@ class MainTemplate extends Component {
           </ul>
         </nav>
         <div className="appContainer">
-          <button>Create</button>
           <RouteMain />
         </div>
       </div>

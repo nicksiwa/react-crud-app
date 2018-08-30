@@ -42,3 +42,17 @@ export const deletePost = (id) => async (dispatch) => {
     console.log('ACTION_DELETE_POST: ', err)
   }
 }
+
+export const createPost = (value) => async (dispatch) => {
+  try {
+    const res = await Service.Post.createPost(value)
+    if(res) {
+      dispatch({
+        type: type.POST.CREATE,
+        payload: res.data
+      })
+    }
+  } catch (err) {
+    console.log('ACTION_CREATE_POST: ', err)
+  }
+}

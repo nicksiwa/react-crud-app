@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getAllPost, deletePost } from '../../actions/post'
+import { getAllPost, deletePost, createPost } from '../../actions/post'
 import PostTable from './table'
+import PostForm from './form'
 
 class Post extends Component {
   componentDidMount() {
@@ -9,7 +10,7 @@ class Post extends Component {
   }
 
   render() {
-    const { posts, deletePost } = this.props
+    const { posts, deletePost, onSubmit } = this.props
     if (posts.length === 0) {
       return (
         <div>No dota</div>
@@ -18,6 +19,7 @@ class Post extends Component {
       return (
         <div>
           <h1>Post Component</h1>
+          <PostForm onSubmit={onSubmit} />
           <PostTable
             posts={posts}
             deletePost={deletePost}
@@ -34,7 +36,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getAllPost: () => dispatch(getAllPost()),
-  deletePost: (id) => dispatch(deletePost(id))
+  deletePost: (id) => dispatch(deletePost(id)),
+  onSubmit: (value) => dispatch(createPost(value))
 })
 
 export default connect(
