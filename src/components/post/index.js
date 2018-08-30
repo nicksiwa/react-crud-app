@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getAllPost } from '../../actions/post'
+import { getAllPost, deletePost } from '../../actions/post'
+import PostTable from './table'
 
 class Post extends Component {
   componentDidMount() {
@@ -8,30 +9,22 @@ class Post extends Component {
   }
 
   render() {
-    const { posts } = this.props
-    return (
-      <div>
-        <h1>Post Component</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Author</th>
-            </tr>
-          </thead>
-          <tbody>
-            {posts && posts.map((post) => (
-              <tr key={post.id}>
-                <td>{post.id}</td>
-                <td>{post.title}</td>
-                <td>{post.author}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    )
+    const { posts, deletePost } = this.props
+    if (posts.length === 0) {
+      return (
+        <div>No dota</div>
+      )
+    } else {
+      return (
+        <div>
+          <h1>Post Component</h1>
+          <PostTable
+            posts={posts}
+            deletePost={deletePost}
+          />
+        </div>
+      )
+    }
   }
 }
 
@@ -40,7 +33,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  getAllPost: () => dispatch(getAllPost())
+  getAllPost: () => dispatch(getAllPost()),
+  deletePost: (id) => dispatch(deletePost(id))
 })
 
 export default connect(

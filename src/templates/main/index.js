@@ -5,8 +5,19 @@ class MainTemplate extends Component {
   render() {
     return (
       <div>
-        <nav>This is navbar</nav>
-        <div>
+        <nav className="navBar">
+          <div className="navBar-title">Title</div>
+          <ul className="navBar-nav">
+            <li className="navBar-nav-item">
+              <a className="navBar-link">User</a>
+            </li>
+            <li className="navBar-nav-item">
+              <a className="navBar-link">Post</a>
+            </li>
+          </ul>
+        </nav>
+        <div className="appContainer">
+          <button>Create</button>
           <RouteMain />
         </div>
       </div>

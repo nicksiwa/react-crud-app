@@ -1,2 +1,10 @@
 // Main Template Project
 // -------------------------------
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.appContainer {
+  margin: rem(20px) rem(50px);
+}

@@ -28,3 +28,17 @@ export const getPostById = (id) => async (dispatch) => {
     console.log('ACTION_GET_POST_BY_ID: ', err)
   }
 }
+
+export const deletePost = (id) => async (dispatch) => {
+  try {
+    const res = await Service.Post.deletePost(id)
+    if(res) {
+      dispatch({
+        type: type.POST.DELETE,
+        payload: res.config.id
+      })
+    }
+  } catch (err) {
+    console.log('ACTION_DELETE_POST: ', err)
+  }
+}

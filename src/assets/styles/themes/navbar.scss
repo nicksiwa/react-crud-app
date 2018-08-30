@@ -1,0 +1,23 @@
+.navBar {
+  display: flex;
+  align-items: center;
+  height: rem(50px);
+  background: #ddd;
+
+  &-title {
+    margin: 0 rem(20px);
+  }
+
+  &-nav {
+    display: flex;
+    flex-direction: row;
+
+    &-item {
+      margin: 0 rem(5);
+    }
+  }
+
+  &-link {
+    color: #555;
+  }
+}

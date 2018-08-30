@@ -1,0 +1,24 @@
+%border {
+  border: 1px solid #ccc;
+}
+
+.table {
+  width: 100%;
+  @extend %border;
+}
+
+.tableHeadCol {
+  font-weight: bold;
+  text-align: left;
+  padding: rem(10px);
+  @extend %border;
+}
+
+.tableCol {
+  padding: rem(5px);
+  @extend %border;
+}
+
+.--alignCenter {
+  text-align: center;
+}

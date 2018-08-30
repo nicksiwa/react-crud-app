@@ -6,6 +6,8 @@ export default function post (state=[], action) {
       return action.payload
     case POST.GET_BY_ID:
       return action.payload
+    case POST.DELETE:
+      return state.filter(post => post.id !== action.payload)
     default:
       return state
   }
