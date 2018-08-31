@@ -51,6 +51,9 @@ export const createPost = (value) => async (dispatch) => {
         type: type.POST.CREATE,
         payload: res.data
       })
+      dispatch({
+        type: type.SIDE_BAR.HIDE
+      })
     }
   } catch (err) {
     console.log('ACTION_CREATE_POST: ', err)
