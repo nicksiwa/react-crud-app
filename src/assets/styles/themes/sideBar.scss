@@ -1,0 +1,36 @@
+.sideBar {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100vw;
+ height: 100vh;
+ visibility: hidden;
+ z-index: 1;
+  &-pusher {
+    background: #fff;
+    box-shadow: 4px 0 6px 4px #aaa;
+    position: absolute;
+    width: rem(500px);
+    height: 100%;
+    top: 0;
+    right: rem(-500px);
+    transition: all 0.5s ease-in-out;
+  }
+
+  &-title {
+    padding: rem(20px);
+    border-bottom: 1px solid #aaa;
+  }
+
+  &-content {
+    padding: rem(20px);
+  }
+
+  &.--active {
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.4);
+    .sideBar-pusher {
+      right: rem(0);
+    }
+  }
+}

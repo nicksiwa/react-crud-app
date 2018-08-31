@@ -28,5 +28,12 @@ export default {
     } catch (err) {
       console.log('SERVICE_CREATE_POST: ', err)
     }
+  },
+  editPost: async (id, value) => {
+    try {
+      return await call().then((call) => call.put(`/posts/${id}`, value))
+    } catch (err) {
+      console.log('SERVICE_EDIT_POST: ', err)
+    }
   }
 }

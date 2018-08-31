@@ -56,3 +56,17 @@ export const createPost = (value) => async (dispatch) => {
     console.log('ACTION_CREATE_POST: ', err)
   }
 }
+
+export const editPost = (id, value) => async (dispatch) => {
+  try {
+    const res = await Service.Post.editPost(id, value)
+    if(res) {
+      dispatch({
+        type: type.POST.EDIT,
+        payload: res.data
+      })
+    }
+  } catch(err) {
+    console.log('ACTION_EDIT_POST: ', err)
+  }
+}

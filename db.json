@@ -1,11 +1,6 @@
 {
   "posts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
       "id": 2,
       "title": "abc",
       "author": "typicode"
@@ -26,18 +21,37 @@
       "id": 7
     },
     {
-      "title": "fff",
-      "author": "asd",
+      "title": "asd",
+      "author": "asdsad",
       "id": 8
-    }
-  ],
-  "comments": [
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "title": "asdasd",
+      "author": "asf",
+      "id": 9
+    },
+    {
+      "title": "asdasd",
+      "author": "asfaaa",
+      "id": 10
+    },
+    {
+      "title": "asdasd",
+      "author": "asdasdasdsad",
+      "id": 11
+    },
+    {
+      "title": "sad",
+      "author": "safas",
+      "id": 12
+    },
+    {
+      "title": "aaa",
+      "author": "dsaf",
+      "id": 13
     }
   ],
+  "comments": [],
   "users": [
     {
       "id": 1,
