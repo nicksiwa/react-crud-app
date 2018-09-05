@@ -14,3 +14,13 @@ export const SIDE_BAR = {
   ACTIVE: "ATIVE_SIDE_BAR",
   HIDE: "HIDE_SIDE_BAR"
 }
+
+export const CONFIRM_DIALOG = {
+  OPEN: "OPEN_CONFIRM_DIALOG",
+  CLOSE: "CLOSE_CONFIRM_DIALOG"
+}
+
+export const MESSAGE = {
+  OPEN: "OPEN_MESSAGE",
+  CLOSE: "CLOSE_MESSAGE"
+}

@@ -9,7 +9,7 @@ class App extends Component {
       <BrowserRouter>
         <Router>
           <Switch>
-            <Route path='/' component={MainTemplate} />
+            <Route path={`${process.env.PUBLIC_URL}/`} component={MainTemplate} />
           </Switch>
         </Router>
       </BrowserRouter>
