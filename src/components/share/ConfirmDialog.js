@@ -13,23 +13,31 @@ class ConfirmDialog extends Component {
     const {
       open,
       close,
-      cb,
-      data
+      title,
+      content,
+      data,
+      func
     } = this.props
+
+    const onConfirm = async () => {
+      await func(data)
+      await close()
+    }
+
     return (
       <Dialog open={open}>
-        <DialogTitle id="alert-dialog-title">{data.title}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {data.content}
+            {content}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={close}>No</Button>
           <Button
             variant="contained"
-            color={!data.delete ? 'primary' : 'secondary'}
-            onClick={() => cb(close())}
+            color='secondary'
+            onClick={onConfirm}
           >
             Yes
           </Button>
@@ -41,7 +49,8 @@ class ConfirmDialog extends Component {
 
 const mapStateToProps = (state) => ({
   open: state.confirmDialog.open,
-  cb: state.confirmDialog.cb,
+  title: state.confirmDialog.title,
+  content: state.confirmDialog.content,
   data: state.confirmDialog.data
 })
 

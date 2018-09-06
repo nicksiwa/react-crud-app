@@ -12,8 +12,7 @@ class PostTable extends Component {
   render() {
     const {
       posts,
-      deletePost,
-      openConfirmDialog
+      onDelete
     } = this.props
     return (
       <Paper>
@@ -37,14 +36,7 @@ class PostTable extends Component {
                     mini
                     variant="fab"
                     color="secondary"
-                    onClick={() => openConfirmDialog(
-                      () => deletePost(post.id),
-                      {
-                        title: 'Delete Post',
-                        content: `Are sure to delete post no.${post.id} ?`,
-                        delete: true
-                      }
-                    )}
+                    onClick={() => onDelete(post.id)}
                   >
                     <DeleteIcon />
                   </Button>

@@ -4,11 +4,9 @@ import {
 
 const initialState = {
   open: false,
-  data: {
-    title: '',
-    content: '',
-    delete: false
-  }
+  title: '',
+  subTitle: '',
+  data: ''
 }
 
 export default function confirmDialog(state = initialState, action) {
@@ -16,12 +14,15 @@ export default function confirmDialog(state = initialState, action) {
     case CONFIRM_DIALOG.OPEN:
       return {
         open: true,
-        cb: action.cb,
+        title: action.title,
+        content: action.content,
         data: action.data
       }
     case CONFIRM_DIALOG.CLOSE:
       return {
         open: false,
+        title: state.title,
+        content: state.content,
         data: state.data
       }
     default:
