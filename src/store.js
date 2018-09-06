@@ -7,13 +7,17 @@ import reducers from './reducers'
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['post', 'sidebar', 'confirmDialog']
+  blacklist: ['post', 'sidebar', 'confirmDialog', 'formDialog']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)
 
 export default function configStore () {
-  const store = createStore(persistedReducer, applyMiddleware(thunk))
+  const store = createStore(
+    persistedReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(thunk),
+  )
   const persistor = persistStore(store)
   return { store, persistor }
 }

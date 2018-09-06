@@ -54,6 +54,9 @@ export const createPost = (value) => async (dispatch) => {
       dispatch({
         type: type.SIDE_BAR.HIDE
       })
+      dispatch({
+        type: type.FORM_DIALOG.CLOSE
+      })
     }
   } catch (err) {
     console.log('ACTION_CREATE_POST: ', err)

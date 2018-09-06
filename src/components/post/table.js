@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
+import PostItem from './item'
 
 class PostTable extends Component {
   render() {
@@ -14,39 +12,27 @@ class PostTable extends Component {
       posts,
       onDelete
     } = this.props
-    return (
-      <Paper>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>ID</TableCell>
-              <TableCell>Title</TableCell>
-              <TableCell>Author</TableCell>
-              <TableCell>Action</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {posts && posts.map((post) => (
-              <TableRow key={post.id}>
-                <TableCell>{post.id}</TableCell>
-                <TableCell>{post.title}</TableCell>
-                <TableCell>{post.author}</TableCell>
-                <TableCell>
-                  <Button
-                    mini
-                    variant="fab"
-                    color="secondary"
-                    onClick={() => onDelete(post.id)}
-                  >
-                    <DeleteIcon />
-                  </Button>
-                </TableCell>
+    if (posts.length === 0) {
+      return (
+        <div>No data</div>
+      )
+    } else {
+      return (
+        <Paper>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>ID</TableCell>
+                <TableCell>Title</TableCell>
+                <TableCell>Author</TableCell>
+                <TableCell>Action</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Paper>
-    )
+            </TableHead>
+            <PostItem posts={posts} onDelete={onDelete} />
+          </Table>
+        </Paper>
+      )
+    }
   }
 }
 
