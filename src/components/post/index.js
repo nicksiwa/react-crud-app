@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Button from '@material-ui/core/Button';
 import { getAllPost, deletePost, createPost } from '../../actions/post'
-import { activeSidebar } from '../../actions/sidebar'
 import PostTable from './table'
 import PostForm from './form'
-import Sidebar from '../../templates/main/Sidebar'
 import ConfirmDialog from '../share/ConfirmDialog'
+import FormDialog from '../share/FormDialog'
 import { openConfirmDialog } from '../../actions/confirmDialog'
+import { openFormDialog } from '../../actions/formDialog'
 
 class Post extends Component {
   componentDidMount() {
@@ -25,42 +26,47 @@ class Post extends Component {
     const {
       posts,
       onSubmit,
-      activeSidebar,
-      deletePost
+      deletePost,
+      openFormDialog
     } = this.props
-    if (posts.length === 0) {
-      return (
-        <div>No data</div>
-      )
-    } else {
-      return (
-        <div>
-          <h1>Post Component</h1>
-          <button onClick={activeSidebar}>Create</button>
-          <Sidebar title="Create Post">
-            <PostForm onSubmit={onSubmit} />
-          </Sidebar>
-          <PostTable
-            posts={posts}
-            onDelete={this.onDelete}
-          />
-          <ConfirmDialog func={deletePost} />
-        </div>
-      )
-    }
+    return (
+      <div>
+        <h1>Post Component</h1>
+        <Button
+          variant='contained'
+          color='primary'
+          onClick={openFormDialog}
+        >
+          Create
+        </Button>
+        <PostTable
+          posts={posts}
+          onDelete={this.onDelete}
+        />
+        <ConfirmDialog func={deletePost} />
+        <FormDialog
+          title="Create Post"
+          form="post"
+          onSubmit={onSubmit}
+        >
+          <PostForm />
+        </FormDialog>
+      </div>
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
-  posts: state.post
+  posts: state.post,
+  // form: 'post' // กำหนดชื่อ form ให้กับปุ่ม submit ใน FormDialog
 })
 
 const mapDispatchToProps = (dispatch) => ({
   getAllPost: () => dispatch(getAllPost()),
   deletePost: (id) => dispatch(deletePost(id)),
   onSubmit: (value) => dispatch(createPost(value)),
-  activeSidebar: () => dispatch(activeSidebar()),
-  openConfirmDialog: (title, content, data) => dispatch(openConfirmDialog(title, content, data))
+  openConfirmDialog: (title, content, data) => dispatch(openConfirmDialog(title, content, data)),
+  openFormDialog: () => dispatch(openFormDialog())
 })
 
 export default connect(

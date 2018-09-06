@@ -20,6 +20,11 @@ export const CONFIRM_DIALOG = {
   CLOSE: "CLOSE_CONFIRM_DIALOG"
 }
 
+export const FORM_DIALOG = {
+  OPEN: "OPEN_FORM_DIALOG",
+  CLOSE: "CLOSE_FORM_DIALOG"
+}
+
 export const MESSAGE = {
   OPEN: "OPEN_MESSAGE",
   CLOSE: "CLOSE_MESSAGE"

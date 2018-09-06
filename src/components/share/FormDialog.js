@@ -1,45 +1,37 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { reduxForm } from 'redux-form'
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { closeConfirmDialog } from '../../actions/confirmDialog'
+import { closeFormDialog } from '../../actions/formDialog'
 
-class ConfirmDialog extends Component {
+class FormDialog extends Component {
   render() {
     const {
-      open,
-      close,
+      children,
       title,
-      content,
-      data,
-      func
+      handleSubmit,
+      onSubmit,
+      open,
+      closeFormDialog
     } = this.props
-
-    const onConfirm = async () => {
-      await func(data)
-      await close()
-    }
-
     return (
       <Dialog open={open}>
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            {content}
-          </DialogContentText>
+          {children}
         </DialogContent>
         <DialogActions>
-          <Button onClick={close}>No</Button>
+          <Button onClick={closeFormDialog}>Cancel</Button>
           <Button
             variant='contained'
-            color='secondary'
-            onClick={onConfirm}
+            color='primary'
+            onClick={handleSubmit(onSubmit)}
           >
-            Yes
+            Create
           </Button>
         </DialogActions>
       </Dialog>
@@ -48,17 +40,16 @@ class ConfirmDialog extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  open: state.confirmDialog.open,
-  title: state.confirmDialog.title,
-  content: state.confirmDialog.content,
-  data: state.confirmDialog.data
+  open: state.formDialog.open
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  close: () => dispatch(closeConfirmDialog())
+  closeFormDialog: () => dispatch(closeFormDialog())
 })
 
-export default connect(
+FormDialog = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ConfirmDialog)
+)(FormDialog)
+
+export default reduxForm({})(FormDialog)
