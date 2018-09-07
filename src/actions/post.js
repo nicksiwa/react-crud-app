@@ -37,6 +37,10 @@ export const deletePost = (id) => async (dispatch) => {
         type: type.POST.DELETE,
         payload: res.config.id
       })
+      dispatch({
+        type: type.MESSAGE.OPEN,
+        payload: 'Delete Success'
+      })
     }
   } catch (err) {
     console.log('ACTION_DELETE_POST: ', err)
@@ -56,6 +60,10 @@ export const createPost = (value) => async (dispatch) => {
       })
       dispatch({
         type: type.FORM_DIALOG.CLOSE
+      })
+      dispatch({
+        type: type.MESSAGE.OPEN,
+        payload: 'Create Success'
       })
     }
   } catch (err) {

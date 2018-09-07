@@ -5,6 +5,7 @@ import user from './user'
 import sidebar from './sidebar'
 import confirmDialog from './confirmDialog'
 import formDialog from './formDialog'
+import message from './message'
 
 export default combineReducers({
   post,
@@ -12,5 +13,6 @@ export default combineReducers({
   sidebar,
   confirmDialog,
   formDialog,
+  message,
   form: formReducer
 })
