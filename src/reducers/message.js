@@ -1,11 +1,21 @@
 import { MESSAGE } from '../constants/actionType'
 
-export default function message(state={}, action) {
+const initialState = {
+  open: false,
+  message: 'initial message'
+}
+
+export default function message(state=initialState, action) {
   switch(action.type) {
     case MESSAGE.OPEN:
-      return state
+      return {
+        open: true,
+        message: action.payload
+      }
     case MESSAGE.CLOSE:
-      return state
+      return {
+        open: false
+      }
     default:
       return state
   }  
