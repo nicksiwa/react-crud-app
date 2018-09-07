@@ -6,8 +6,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import { closeMessage } from '../../actions/message'
 
 class Message extends Component {
-  queue = []
-  
   render() {
     const {
       open,
@@ -18,14 +16,11 @@ class Message extends Component {
       <Snackbar
         open={open}
         message={message}
-        action={[
-          <IconButton
-            color="inherit"
-            onClick={close}
-          >
+        action={
+          <IconButton color="inherit" onClick={close}>
             <CloseIcon />
           </IconButton>
-        ]}
+        }
         onClose={close}
         autoHideDuration={6000}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
