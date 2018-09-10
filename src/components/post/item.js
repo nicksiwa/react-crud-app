@@ -4,12 +4,14 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
+import CreateIcon from '@material-ui/icons/Create';
 
 class PostItem extends Component {
   render() {
     const {
       posts,
-      onDelete
+      onDelete,
+      getPostById
     } = this.props
     return (
       <TableBody>
@@ -21,8 +23,16 @@ class PostItem extends Component {
             <TableCell>
               <Button
                 mini
-                variant="fab"
-                color="secondary"
+                variant='fab'
+                color='default'
+                onClick={() => getPostById(post.id)}
+              >
+                <CreateIcon />
+              </Button>
+              <Button
+                mini
+                variant='fab'
+                color='secondary'
                 onClick={() => onDelete(post.id)}
               >
                 <DeleteIcon />

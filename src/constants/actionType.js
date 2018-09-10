@@ -29,3 +29,8 @@ export const MESSAGE = {
   OPEN: "OPEN_MESSAGE",
   CLOSE: "CLOSE_MESSAGE"
 }
+
+export const FORM_STATE = {
+  IS_EDITING: "FORM_IS_EDITING",
+  RESET: "RESET_FORM_STATE"
+}

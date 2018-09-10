@@ -10,4 +10,7 @@ export const closeFormDialog = () => (dispatch) => {
   dispatch({
     type: type.FORM_DIALOG.CLOSE
   })
+  dispatch({
+    type: type.FORM_STATE.RESET
+  })
 }

@@ -7,7 +7,16 @@ import reducers from './reducers'
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['post', 'sidebar', 'confirmDialog', 'formDialog', 'message']
+  blacklist: [
+    'post',
+    'sidebar',
+    'confirmDialog',
+    'formDialog',
+    'message',
+    'loadData',
+    'form',
+    'formState'
+  ]
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)
