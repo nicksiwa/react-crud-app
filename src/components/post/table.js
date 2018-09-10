@@ -10,7 +10,8 @@ class PostTable extends Component {
   render() {
     const {
       posts,
-      onDelete
+      onDelete,
+      getPostById
     } = this.props
     if (posts.length === 0) {
       return (
@@ -28,7 +29,11 @@ class PostTable extends Component {
                 <TableCell>Action</TableCell>
               </TableRow>
             </TableHead>
-            <PostItem posts={posts} onDelete={onDelete} />
+            <PostItem
+              posts={posts}
+              onDelete={onDelete}
+              getPostById={getPostById}
+            />
           </Table>
         </Paper>
       )

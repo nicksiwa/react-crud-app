@@ -13,10 +13,12 @@ class FormDialog extends Component {
     const {
       children,
       title,
-      handleSubmit,
-      onSubmit,
       open,
-      closeFormDialog
+      close,
+      onSubmit,
+      onEdit,
+      handleSubmit,
+      formState
     } = this.props
     return (
       <Dialog open={open}>
@@ -25,13 +27,13 @@ class FormDialog extends Component {
           {children}
         </DialogContent>
         <DialogActions>
-          <Button onClick={closeFormDialog}>Cancel</Button>
+          <Button onClick={() => close()}>Cancel</Button>
           <Button
             variant='contained'
             color='primary'
-            onClick={handleSubmit(onSubmit)}
+            onClick={handleSubmit(!formState.isEditing ? onSubmit : onEdit)}
           >
-            Create
+            {!formState.isEditing ? 'Create' : 'Update'}
           </Button>
         </DialogActions>
       </Dialog>
@@ -44,7 +46,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  closeFormDialog: () => dispatch(closeFormDialog())
+  close: () => dispatch(closeFormDialog())
 })
 
 FormDialog = connect(

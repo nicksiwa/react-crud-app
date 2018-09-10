@@ -24,5 +24,5 @@ class PostForm extends Component {
 }
 
 export default reduxForm({
-  form: 'post'
+  form: 'post',
 })(PostForm)

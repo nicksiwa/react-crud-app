@@ -20,8 +20,11 @@ export const getPostById = (id) => async (dispatch) => {
     const res = await Service.Post.getPostById(id)
     if(res) {
       dispatch({
-        type: type.POST.GET_BY_ID,
+        type: type.FORM_STATE.IS_EDITING,
         payload: res.data
+      })
+      dispatch({
+        type: type.FORM_DIALOG.OPEN
       })
     }
   } catch (err) {
@@ -71,13 +74,23 @@ export const createPost = (value) => async (dispatch) => {
   }
 }
 
-export const editPost = (id, value) => async (dispatch) => {
+export const editPost = (value) => async (dispatch) => {
   try {
-    const res = await Service.Post.editPost(id, value)
+    const res = await Service.Post.editPost(value)
     if(res) {
       dispatch({
         type: type.POST.EDIT,
         payload: res.data
+      })
+      dispatch({
+        type: type.FORM_DIALOG.CLOSE
+      })
+      dispatch({
+        type: type.MESSAGE.OPEN,
+        payload: 'Update Success'
+      })
+      dispatch({
+        type: type.FORM_STATE.RESET
       })
     }
   } catch(err) {
