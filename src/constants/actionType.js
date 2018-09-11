@@ -7,7 +7,11 @@ export const POST = {
 }
 
 export const USER = {
-  GET_ALL: "GET_ALL_USER"
+  GET_ALL: "GET_ALL_USER",
+  GET_BY_ID: "GET_USER_BY_ID",
+  DELETE: "DELETE_USER",
+  CREATE: "CREATE_USER",
+  EDIT: "EDIT_USER"
 }
 
 export const SIDE_BAR = {

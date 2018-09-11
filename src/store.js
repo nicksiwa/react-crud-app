@@ -9,6 +9,7 @@ const persistConfig = {
   storage,
   blacklist: [
     'post',
+    'user',
     'sidebar',
     'confirmDialog',
     'formDialog',
